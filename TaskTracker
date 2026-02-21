@@ -4,11 +4,6 @@ import os
 
 FILE_NAME = "tasks.json"
 
-def load_tasks():
-    if os.path.exists(FILE_NAME):
-        with open(FILE_NAME, "r") as f:
-            return json.load(f)
-    return []
 
 def save_tasks(tasks):
     with open(FILE_NAME, "w") as f:
@@ -22,6 +17,11 @@ def list_tasks():
         for i, task in enumerate(tasks, 1):
             print(f"{i}. {task}")
 
+def load_tasks():
+    if os.path.exists(FILE_NAME):
+        with open(FILE_NAME, "r") as f:
+            return json.load(f)
+    return []
 def add_task(task):
     tasks = load_tasks()
     tasks.append(task)
